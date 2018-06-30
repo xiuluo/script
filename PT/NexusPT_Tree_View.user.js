@@ -212,7 +212,7 @@ var TreeNode = (function () {
         jstree_demo_div.show();
         if (change_tree_btn.text() === "[树状化]") {
             if (jstree_demo_div.html() === "") {
-                var data = new TreeNode($("a.index[href^=download]").text().match(/\[\w*BT]\.(.+)\.torrent/)[1]);
+                var data = new TreeNode($("a.index[href^=download]").text().match(/\[\w*T]\.(.+)\.torrent/)[1]);
                 $('#filelist > table tr:gt(0)').each(function (index) {
                     var tr = $(this);
                     var nodes = $(tr.find("td")[0]).text().split('/');
