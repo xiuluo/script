@@ -17,19 +17,23 @@
 // ==/UserScript==
 
 var icons = {
-    unknown: "https://share.dmhy.org/images/icon/unknown.gif",
     audio: "https://share.dmhy.org/images/icon/mp3.gif",
-    video: "https://share.dmhy.org/images/icon/mp4.gif",
+    bmp: "https://share.dmhy.org/images/icon/bmp.gif",
     image: "https://share.dmhy.org/images/icon/jpg.gif",
+    png: "https://share.dmhy.org/images/icon/png.gif",
+    rar: "https://share.dmhy.org/images/icon/rar.gif",
     text: "https://share.dmhy.org/images/icon/txt.gif",
-    rar: "https://share.dmhy.org/images/icon/rar.gif"
+    unknown: "https://share.dmhy.org/images/icon/unknown.gif",
+    video: "https://share.dmhy.org/images/icon/mp4.gif",
 };
 var type2Icon = {
     audio: ["flac", "aac", "wav", "mp3"],
-    video: ["mkv", "mka", "mp4"],
-    image: ["jpg", "bmp", "jpeg", "webp"],
+    bmp: ["bmp"],
+    image: ["jpg", "jpeg", "webp"],
+    png: ["png"],
+    rar: ["rar", "zip", "7z"],
     text: ["txt", "log", "cue", "ass"],
-    rar: ["rar", "zip", "7z"]
+    video: ["mkv", "mka", "mp4"],
 };
 var Dictionary = (function () {
     function Dictionary() {
@@ -208,7 +212,7 @@ var TreeNode = (function () {
         jstree_demo_div.show();
         if (change_tree_btn.text() === "[树状化]") {
             if (jstree_demo_div.html() === "") {
-                var data = new TreeNode($("a.index[href^=download]").text().match(/\[BYRBT|NYPT|MTPT]\.(.+)\.torrent/)[1]);
+                var data = new TreeNode($("a.index[href^=download]").text().match(/\[\w*BT]\.(.+)\.torrent/)[1]);
                 $('#filelist > table tr:gt(0)').each(function (index) {
                     var tr = $(this);
                     var nodes = $(tr.find("td")[0]).text().split('/');
