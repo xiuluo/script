@@ -33,7 +33,7 @@ var type2Icon = {
     png: ["png"],
     rar: ["rar", "zip", "7z"],
     text: ["txt", "log", "cue", "ass"],
-    video: ["mkv", "mka", "mp4"],
+    video: ["mkv", "mka", "mp4", "ts"],
 };
 var Dictionary = (function () {
     function Dictionary() {
@@ -104,15 +104,15 @@ var FileSize = (function () {
     };
     FileSize.toSize = function (length) {
         if (length >= Math.pow(2, 40))
-            return this.format(length, 40, "TiB");
+            return this.format(length, 40, " TiB");
         else if (length >= Math.pow(2, 30))
-            return this.format(length, 30, "GiB");
+            return this.format(length, 30, " GiB");
         else if (length >= Math.pow(2, 20))
-            return this.format(length, 20, "MiB");
+            return this.format(length, 20, " MiB");
         else if (length >= Math.pow(2, 10))
-            return this.format(length, 10, "KiB");
+            return this.format(length, 10, " KiB");
         else
-            return this.format(length, 0, "Bytes");
+            return this.format(length, 0, " Bytes");
     };
     return FileSize;
 }());
@@ -205,7 +205,7 @@ var TreeNode = (function () {
     var hidefl_btn = $("#hidefl");
     hidefl_btn.append("<a id='change_tree' href=\"javascript: void(0)\">[树状化]</a>");
     $("#filelist").after("<div id=\"jstree_demo_div\" style='background-color: aliceblue'></div>");
-
+    hidefl_btn.click();
     var jstree_demo_div = $('#jstree_demo_div');
     $("#change_tree").click(function () {
         var change_tree_btn = $(this);
@@ -227,18 +227,16 @@ var TreeNode = (function () {
             change_tree_btn.text("[恢复]");
         } else {
             $("#filelist").show();
-            $('#jstree_demo_div').hide();
+            jstree_demo_div.hide();
             change_tree_btn.text("[树状化]");
         }
     });
-
     $("#hidefl > a:nth-child(1)").click(function () {
-        $('#jstree_demo_div').hide();
-    });
-    $("#showfl > a:nth-child(1)").click(function () {
         $('#jstree_demo_div').show();
     });
-
+    $("#showfl > a:nth-child(1)").click(function () {
+        $('#jstree_demo_div').hide();
+    });
 })();
 
 /**
