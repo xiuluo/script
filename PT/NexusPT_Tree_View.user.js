@@ -13,7 +13,7 @@
 // @resource     customCSS http://cdn.bootcss.com/jstree/3.3.3/themes/default/style.min.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
-// @updateURL    https://raw.githubusercontent.com/xiuluo/script/PT/master/NexusPT_Tree_View.user.js
+// @updateURL    https://github.com/xiuluo/script/raw/master/PT/NexusPT_Tree_View.user.js
 // ==/UserScript==
 
 var icons = {
